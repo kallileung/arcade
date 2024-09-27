@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://2j5c4qbcmba8"]
+
+[ext_resource type="PackedScene" uid="uid://dmisyun4rlopa" path="res://scenes/ball.tscn" id="1_8qpg7"]
+[ext_resource type="Script" path="res://scripts/game_main.gd" id="1_geoni"]
+[ext_resource type="PackedScene" uid="uid://bxg55lbaib73k" path="res://scenes/paddle.tscn" id="2_6w2qb"]
+[ext_resource type="Script" path="res://scenes/HUD.gd" id="2_15j1x"]
+[ext_resource type="PackedScene" uid="uid://bhowu813s5hf1" path="res://scenes/enemy_paddle.tscn" id="4_aq1jc"]
+[ext_resource type="Texture2D" uid="uid://dqybw2q0ww8yv" path="res://sprites/sprites.png" id="5_yjq3y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpwn8"]
+size = Vector2(1284, 16.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbn1m"]
+size = Vector2(142.5, 666)
+
+[node name="GameMain" type="Node"]
+script = ExtResource("1_geoni")
+ball_scene = ExtResource("1_8qpg7")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("2_15j1x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="EnemyScore" type="Label" parent="HUD/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.117647, 0.815686, 0.984314, 1)
+theme_override_font_sizes/font_size = 44
+text = "0"
+
+[node name="Colon" type="Label" parent="HUD/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 44
+text = ":"
+
+[node name="PlayerScore" type="Label" parent="HUD/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0.235294, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "0"
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.192157, 0.192157, 0.192157, 1)
+
+[node name="PlayerPaddle" parent="." groups=["player"] instance=ExtResource("2_6w2qb")]
+position = Vector2(1054, 314)
+
+[node name="EnemyPaddle" parent="." groups=["player"] instance=ExtResource("4_aq1jc")]
+position = Vector2(116, 295)
+
+[node name="UpperWall" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperWall" groups=["wall"]]
+position = Vector2(599, 5.75)
+shape = SubResource("RectangleShape2D_tpwn8")
+
+[node name="Sprite2D" type="Sprite2D" parent="UpperWall"]
+position = Vector2(601, 8.5)
+scale = Vector2(12.3136, 0.684211)
+texture = ExtResource("5_yjq3y")
+region_enabled = true
+region_rect = Rect2(115.925, 65.4576, 118.212, 19.4365)
+
+[node name="LowerWall" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerWall" groups=["wall"]]
+position = Vector2(596, 647)
+shape = SubResource("RectangleShape2D_tpwn8")
+
+[node name="Sprite2D" type="Sprite2D" parent="LowerWall"]
+position = Vector2(605, 649)
+scale = Vector2(12.4732, 1.575)
+texture = ExtResource("5_yjq3y")
+region_enabled = true
+region_rect = Rect2(118.628, 114.351, 112.795, 20.0737)
+
+[node name="LeftGoal" type="Area2D" parent="." groups=["goal"]]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftGoal"]
+position = Vector2(-99, 323)
+shape = SubResource("RectangleShape2D_wbn1m")
+
+[node name="RightGoal" type="Area2D" parent="." groups=["goal"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightGoal"]
+position = Vector2(1265, 326)
+shape = SubResource("RectangleShape2D_wbn1m")
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(579, 308)
+
+[node name="EnemyStartPos" type="Marker2D" parent="."]
+position = Vector2(117, 293)
+
+[node name="PlayerStartPos" type="Marker2D" parent="."]
+position = Vector2(1055, 312)
+
+[connection signal="body_entered" from="LeftGoal" to="." method="_on_left_goal_area_entered"]
+[connection signal="body_entered" from="RightGoal" to="." method="_on_right_goal_area_entered"]

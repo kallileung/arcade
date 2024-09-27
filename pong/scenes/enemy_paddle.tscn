@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhowu813s5hf1"]
+
+[ext_resource type="Texture2D" uid="uid://dqybw2q0ww8yv" path="res://sprites/sprites.png" id="1_j8qku"]
+[ext_resource type="Script" path="res://scripts/enemy_paddle.gd" id="1_nn53t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbg7x"]
+size = Vector2(19, 194)
+
+[node name="EnemyPaddle" type="Node2D"]
+position = Vector2(1, -1)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_nn53t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_wbg7x")
+
+[node name="Sprites" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(1.07143, 1.71429)
+texture = ExtResource("1_j8qku")
+region_enabled = true
+region_rect = Rect2(67.3283, 17.4868, 14.9757, 112.795)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://4v1hv21t5uh3"]
+
+[ext_resource type="Script" path="res://scripts/moving_obstacle.gd" id="1_4o5r0"]
+[ext_resource type="Texture2D" uid="uid://c37xbqdbr7ijl" path="res://art/tilemaps/spritesheet_vehicles copy.png" id="2_vvh2p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vu6pb"]
+size = Vector2(116, 66)
+
+[node name="Car" type="CharacterBody2D" groups=["car"]]
+z_index = 2
+scale = Vector2(0.41, 0.41)
+slide_on_ceiling = false
+platform_floor_layers = 4278190081
+script = ExtResource("1_4o5r0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["car"]]
+shape = SubResource("RectangleShape2D_vu6pb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["car"]]
+rotation = 1.5708
+texture = ExtResource("2_vvh2p")
+region_enabled = true
+region_rect = Rect2(71.1585, 363.411, 70.5753, 115.61)

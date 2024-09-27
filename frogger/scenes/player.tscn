@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cri33qomdj15n"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_jyqft"]
+[ext_resource type="Texture2D" uid="uid://b32sg60n4y3ap" path="res://art/sprites/frog_squish.PNG" id="2_3nkxa"]
+[ext_resource type="Texture2D" uid="uid://b8yibb23v2rh7" path="res://art/sprites/frog_stretch.PNG" id="3_mvkkm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyuix"]
+radius = 12.6667
+height = 25.3333
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aam8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3nkxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mvkkm")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 12.0
+}]
+
+[node name="Player" type="Area2D"]
+z_index = 1
+position = Vector2(526, 690)
+script = ExtResource("1_jyqft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(1, 2)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_kyuix")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_aam8i")
+animation = &"jump"
+
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 0.1

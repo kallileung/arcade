@@ -1,0 +1,343 @@
+[gd_scene load_steps=7 format=3 uid="uid://8weeq07mqs6l"]
+
+[ext_resource type="Texture2D" uid="uid://dqybw2q0ww8yv" path="res://sprites/sprites.png" id="1_80ile"]
+[ext_resource type="Script" path="res://scripts/breakout.gd" id="1_pkhty"]
+[ext_resource type="Script" path="res://scripts/brick.gd" id="3_levsp"]
+[ext_resource type="Texture2D" uid="uid://dppy7twfvsxvv" path="res://sprites/vector_whiteIcons.svg" id="4_0too3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmmb4"]
+radius = 10.8414
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o28wj"]
+size = Vector2(10.857, 108.857)
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_pkhty")
+
+[node name="ball" type="Sprite2D" parent="." groups=["ball"]]
+position = Vector2(264.658, 680.058)
+scale = Vector2(1.1007, 1.18446)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(102, 3, 47, 44)
+
+[node name="Area2D" type="Area2D" parent="ball" groups=["ball"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball/Area2D" groups=["ball"]]
+shape = SubResource("CircleShape2D_vmmb4")
+
+[node name="paddle" type="Sprite2D" parent="."]
+position = Vector2(267.792, 879)
+scale = Vector2(0.802597, 0.863669)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(120, 68, 111, 15)
+
+[node name="brick_blue" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(354.303, 72.5227)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(60.5376, 16.0724, 28.8853, 115.146)
+script = ExtResource("3_levsp")
+points = 100
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_blue"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_blue/Area2D"]
+position = Vector2(-0.285717, 2.00015)
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_blue5" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(449.874, 73.2575)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(60.5376, 16.0724, 28.8853, 115.146)
+script = ExtResource("3_levsp")
+points = 100
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_blue5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_blue5/Area2D"]
+position = Vector2(-0.285717, 2.00015)
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_blue2" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(260.284, 72.7694)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(60.5376, 16.0724, 28.8853, 115.146)
+script = ExtResource("3_levsp")
+points = 100
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_blue2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_blue2/Area2D"]
+position = Vector2(-0.285717, 2.00015)
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_blue3" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(164.431, 73.7565)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(60.5376, 16.0724, 28.8853, 115.146)
+script = ExtResource("3_levsp")
+points = 100
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_blue3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_blue3/Area2D"]
+position = Vector2(-0.285717, 2.00015)
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_blue4" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(65.8262, 71.5356)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(60.5376, 16.0724, 28.8853, 115.146)
+script = ExtResource("3_levsp")
+points = 100
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_blue4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_blue4/Area2D"]
+position = Vector2(-0.285717, 2.00015)
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_purple" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(357.291, 101.873)
+scale = Vector2(0.769984, 0.671046)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(110, 108, 128, 33)
+script = ExtResource("3_levsp")
+points = 50
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_purple"]
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_purple/Area2D"]
+position = Vector2(-0.285614, -1.00003)
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_purple3" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(259.208, 100.886)
+scale = Vector2(0.729418, 0.730846)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(110, 108, 128, 33)
+script = ExtResource("3_levsp")
+points = 50
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_purple3"]
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_purple3/Area2D"]
+position = Vector2(-0.285614, -1.00003)
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_purple4" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(161.125, 99.8995)
+scale = Vector2(0.708982, 0.805324)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(110, 108, 128, 33)
+script = ExtResource("3_levsp")
+points = 50
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_purple4"]
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_purple4/Area2D"]
+position = Vector2(-0.285614, -1.00003)
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_purple5" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(62.125, 96.9393)
+scale = Vector2(0.751951, 0.715621)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(110, 108, 128, 33)
+script = ExtResource("3_levsp")
+points = 50
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_purple5"]
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_purple5/Area2D"]
+position = Vector2(-0.285614, -1.00003)
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_purple2" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(457.207, 100.886)
+scale = Vector2(0.75911, 0.700944)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(110, 108, 128, 33)
+script = ExtResource("3_levsp")
+points = 50
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_purple2"]
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_purple2/Area2D"]
+position = Vector2(-0.285614, -1.00003)
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_red" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(356.137, 129.277)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(9, 16, 31, 117)
+script = ExtResource("3_levsp")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_red"]
+position = Vector2(0.571429, 0.571429)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_red/Area2D"]
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_red3" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(259.367, 129.77)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(9, 16, 31, 117)
+script = ExtResource("3_levsp")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_red3"]
+position = Vector2(0.571429, 0.571429)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_red3/Area2D"]
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_red4" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(163.972, 130.264)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(9, 16, 31, 117)
+script = ExtResource("3_levsp")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_red4"]
+position = Vector2(0.571429, 0.571429)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_red4/Area2D"]
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_red5" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(67.202, 130.264)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(9, 16, 31, 117)
+script = ExtResource("3_levsp")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_red5"]
+position = Vector2(0.571429, 0.571429)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_red5/Area2D"]
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="brick_red2" type="Sprite2D" parent="." groups=["brick"]]
+position = Vector2(451.99, 128.783)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+texture = ExtResource("1_80ile")
+region_enabled = true
+region_rect = Rect2(9, 16, 31, 117)
+script = ExtResource("3_levsp")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="brick_red2"]
+position = Vector2(0.571429, 0.571429)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brick_red2/Area2D"]
+shape = SubResource("RectangleShape2D_o28wj")
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(265.278, 678.847)
+rotation = 1.5708
+scale = Vector2(0.863669, 0.802597)
+
+[node name="RightWall" type="Marker2D" parent="."]
+position = Vector2(542, 954)
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 51.1251
+offset_top = 25.8939
+offset_right = 189.125
+offset_bottom = 112.894
+scale = Vector2(0.506332, 0.505825)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 44
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Sprite2D" parent="ScoreLabel"]
+position = Vector2(-28.0309, 33.9862)
+texture = ExtResource("4_0too3")
+region_enabled = true
+region_rect = Rect2(550, 100, 44, 37)
+
+[node name="LivesLabel" type="Label" parent="."]
+offset_left = 446.792
+offset_top = 25.0
+offset_right = 584.797
+offset_bottom = 112.0
+scale = Vector2(0.515148, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 44
+text = "3"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Lives" type="Sprite2D" parent="LivesLabel"]
+position = Vector2(113.927, 31.99)
+texture = ExtResource("4_0too3")
+region_enabled = true
+region_rect = Rect2(602, 41, 36, 48)
+
+[connection signal="area_entered" from="brick_blue/Area2D" to="brick_blue" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_blue5/Area2D" to="brick_blue5" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_blue2/Area2D" to="brick_blue2" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_blue3/Area2D" to="brick_blue3" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_blue4/Area2D" to="brick_blue4" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_purple/Area2D" to="brick_purple" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_purple3/Area2D" to="brick_purple3" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_purple4/Area2D" to="brick_purple4" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_purple5/Area2D" to="brick_purple5" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_purple2/Area2D" to="brick_purple2" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_red/Area2D" to="brick_red" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_red3/Area2D" to="brick_red3" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_red4/Area2D" to="brick_red4" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_red5/Area2D" to="brick_red5" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="brick_red2/Area2D" to="brick_red2" method="_on_area_2d_area_entered"]
