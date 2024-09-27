@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ced34oeu3uw2r"]
+
+[ext_resource type="Script" path="res://scripts/fruit.gd" id="1_errms"]
+[ext_resource type="PackedScene" uid="uid://c1y7882cx7not" path="res://models/fruits/08peach.glb" id="2_ramgn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fygt0"]
+radius = 5.32213
+height = 10.6443
+
+[node name="Peach" type="RigidBody3D" groups=["fruit"]]
+mass = 0.8
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_errms")
+type = 7
+points = 16
+
+[node name="08peach" parent="." instance=ExtResource("2_ramgn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fygt0")

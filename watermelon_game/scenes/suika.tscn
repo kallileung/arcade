@@ -1,0 +1,135 @@
+[gd_scene load_steps=23 format=3 uid="uid://bsdts5xw6me4p"]
+
+[ext_resource type="Script" path="res://scripts/suika.gd" id="1_3k6se"]
+[ext_resource type="PackedScene" uid="uid://c2r4ob5n1xrer" path="res://scenes/fruits/cherry.tscn" id="2_ieyv6"]
+[ext_resource type="PackedScene" uid="uid://cctvtbg08ffpt" path="res://scenes/fruits/strawberry.tscn" id="3_m5xm0"]
+[ext_resource type="PackedScene" uid="uid://7pxghv54w5ob" path="res://scenes/fruits/grape.tscn" id="3_o3ylb"]
+[ext_resource type="PackedScene" uid="uid://d1ht66wfq6sf4" path="res://scenes/fruits/clementine.tscn" id="5_lghtx"]
+[ext_resource type="PackedScene" uid="uid://bj3hkanml8gy3" path="res://scenes/fruits/orange.tscn" id="6_0856f"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="6_hi47y"]
+[ext_resource type="PackedScene" uid="uid://5cd7fcob4xqg" path="res://scenes/fruits/watermelon.tscn" id="6_t37te"]
+[ext_resource type="PackedScene" uid="uid://yfh2twgjb1fr" path="res://scenes/rect_container.tscn" id="7_lph2n"]
+[ext_resource type="PackedScene" uid="uid://dyx4ubqj3ufie" path="res://scenes/fruits/apple.tscn" id="7_ocnqa"]
+[ext_resource type="PackedScene" uid="uid://sofp2chdwm7y" path="res://scenes/fruits/pear.tscn" id="8_nwk0e"]
+[ext_resource type="PackedScene" uid="uid://ced34oeu3uw2r" path="res://scenes/fruits/peach.tscn" id="9_f1dmq"]
+[ext_resource type="PackedScene" uid="uid://ceinpk24mmj0i" path="res://scenes/fruits/pineapple.tscn" id="10_s12ph"]
+[ext_resource type="PackedScene" uid="uid://cif0i2ydm88tt" path="res://scenes/fruits/melon.tscn" id="11_kda5b"]
+[ext_resource type="AudioStream" uid="uid://bavnj1dg2ij6k" path="res://resources/audio/woosh5.ogg" id="13_w0jto"]
+[ext_resource type="PackedScene" uid="uid://blctyq3xmfo2d" path="res://models/fill_line.glb" id="15_pio0l"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nplkr"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_coig7"]
+sky_material = SubResource("ProceduralSkyMaterial_nplkr")
+
+[sub_resource type="Environment" id="Environment_4u58v"]
+background_mode = 2
+sky = SubResource("Sky_coig7")
+ambient_light_energy = 0.0
+tonemap_mode = 2
+tonemap_exposure = 2.22
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ixu03"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aftuw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lnwby"]
+
+[node name="Suika" type="Node3D"]
+
+[node name="Game" type="Node3D" parent="."]
+process_mode = 1
+script = ExtResource("1_3k6se")
+fruits = Array[PackedScene]([ExtResource("2_ieyv6"), ExtResource("3_m5xm0"), ExtResource("3_o3ylb"), ExtResource("5_lghtx"), ExtResource("6_0856f"), ExtResource("7_ocnqa"), ExtResource("8_nwk0e"), ExtResource("9_f1dmq"), ExtResource("10_s12ph"), ExtResource("11_kda5b"), ExtResource("6_t37te")])
+
+[node name="SoundFX" type="AudioStreamPlayer" parent="Game"]
+stream = ExtResource("13_w0jto")
+
+[node name="Sun" type="DirectionalLight3D" parent="Game"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+
+[node name="World" type="WorldEnvironment" parent="Game"]
+environment = SubResource("Environment_4u58v")
+
+[node name="SpawnPos" type="Marker3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 41.3539, 0)
+
+[node name="Lowerbound" type="Marker3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.9919, 0)
+
+[node name="Upperbound" type="Marker3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.2988, 0)
+
+[node name="SpawnTimer" type="Timer" parent="Game"]
+one_shot = true
+autostart = true
+
+[node name="PlayerPOV" type="Marker3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.8071, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Game/PlayerPOV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.3077, 41.2762)
+
+[node name="BirdsEyeView" type="Camera3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 84.8675, 0)
+visible = false
+
+[node name="Container" type="StaticBody3D" parent="Game"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Container"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_ixu03")
+
+[node name="rect_container" parent="Game/Container" instance=ExtResource("7_lph2n")]
+
+[node name="FillLine" type="StaticBody3D" parent="Game"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -3.64992, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/FillLine"]
+shape = SubResource("ConvexPolygonShape3D_aftuw")
+
+[node name="fill_line" parent="Game/FillLine" instance=ExtResource("15_pio0l")]
+
+[node name="ContainerLid" type="Area3D" parent="Game"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.0863361, 33.0853, 0.0302677)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/ContainerLid"]
+shape = SubResource("BoxShape3D_lnwby")
+
+[node name="WarningTimer" type="Timer" parent="Game"]
+
+[node name="UI" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_hi47y")
+
+[node name="ScoreDisplay" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ScoreDisplay"]
+layout_mode = 0
+offset_right = 68.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="Score" type="Label" parent="UI/ScoreDisplay/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.560784, 0.560784, 0.560784, 1)
+theme_override_font_sizes/font_size = 40
+text = "Score:"
+
+[node name="ScoreVal" type="Label" parent="UI/ScoreDisplay/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.686275, 0.686275, 0.686275, 1)
+theme_override_font_sizes/font_size = 40
+text = "0"

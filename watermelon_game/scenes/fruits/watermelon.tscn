@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://5cd7fcob4xqg"]
+
+[ext_resource type="Script" path="res://scripts/fruit.gd" id="1_xpbba"]
+[ext_resource type="PackedScene" uid="uid://p4m2ti6tcnrj" path="res://models/fruits/11watermelon.glb" id="2_mlhum"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ba4tr"]
+radius = 7.31427
+height = 14.9534
+
+[node name="Watermelon" type="RigidBody3D" groups=["fruit"]]
+mass = 8.0
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_xpbba")
+type = 10
+points = 22
+
+[node name="11watermelon" parent="." instance=ExtResource("2_mlhum")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ba4tr")

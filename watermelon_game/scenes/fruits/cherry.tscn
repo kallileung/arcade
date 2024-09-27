@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2r4ob5n1xrer"]
+
+[ext_resource type="Script" path="res://scripts/fruit.gd" id="1_3arbt"]
+[ext_resource type="PackedScene" uid="uid://cr4a435tqgvxn" path="res://models/fruits/01cherry.glb" id="2_7uupq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fygt0"]
+radius = 0.963865
+height = 1.92773
+
+[node name="Cherry" type="RigidBody3D" groups=["fruit"]]
+mass = 0.01
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_3arbt")
+
+[node name="01cherry" parent="." instance=ExtResource("2_7uupq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fygt0")

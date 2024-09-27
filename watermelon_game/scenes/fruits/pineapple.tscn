@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceinpk24mmj0i"]
+
+[ext_resource type="Script" path="res://scripts/fruit.gd" id="1_dwo1m"]
+[ext_resource type="PackedScene" uid="uid://02smgeukc67" path="res://models/fruits/09pine.glb" id="2_k8quj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fygt0"]
+radius = 5.80227
+height = 12.2331
+
+[node name="Pineapple" type="RigidBody3D" groups=["fruit"]]
+mass = 2.0
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_dwo1m")
+type = 8
+points = 18
+
+[node name="09pine" parent="." instance=ExtResource("2_k8quj")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fygt0")

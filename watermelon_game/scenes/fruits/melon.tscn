@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cif0i2ydm88tt"]
+
+[ext_resource type="Script" path="res://scripts/fruit.gd" id="1_bvgus"]
+[ext_resource type="PackedScene" uid="uid://q3v6jm5ryec5" path="res://models/fruits/10melon.glb" id="2_fkwdr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fygt0"]
+radius = 6.30139
+height = 12.608
+
+[node name="Melon" type="RigidBody3D" groups=["fruit"]]
+mass = 4.0
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_bvgus")
+type = 9
+points = 20
+
+[node name="10melon" parent="." instance=ExtResource("2_fkwdr")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fygt0")

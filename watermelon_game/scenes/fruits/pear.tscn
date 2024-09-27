@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://sofp2chdwm7y"]
+
+[ext_resource type="Script" path="res://scripts/fruit.gd" id="1_a5p8q"]
+[ext_resource type="PackedScene" uid="uid://b3dhr0fys5r4r" path="res://models/fruits/07pear.glb" id="2_fjlnf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fygt0"]
+radius = 4.82697
+height = 9.65395
+
+[node name="Pear" type="RigidBody3D" groups=["fruit"]]
+mass = 0.5
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_a5p8q")
+type = 6
+points = 14
+
+[node name="07pear" parent="." instance=ExtResource("2_fjlnf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fygt0")

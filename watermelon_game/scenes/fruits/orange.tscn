@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj3hkanml8gy3"]
+
+[ext_resource type="Script" path="res://scripts/fruit.gd" id="1_pftse"]
+[ext_resource type="PackedScene" uid="uid://5egi8v5ru75u" path="res://models/fruits/05orange.glb" id="2_7udam"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fygt0"]
+radius = 4.13793
+height = 8.3453
+
+[node name="Orange" type="RigidBody3D" groups=["fruit"]]
+mass = 0.2
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_pftse")
+type = 4
+points = 10
+
+[node name="05orange" parent="." instance=ExtResource("2_7udam")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fygt0")

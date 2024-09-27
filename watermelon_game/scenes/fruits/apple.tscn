@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyx4ubqj3ufie"]
+
+[ext_resource type="Script" path="res://scripts/fruit.gd" id="1_nrypi"]
+[ext_resource type="PackedScene" uid="uid://ro2cc2k4dy3d" path="res://models/fruits/06apple.glb" id="2_epjsp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fygt0"]
+radius = 4.38937
+height = 8.77873
+
+[node name="Apple" type="RigidBody3D" groups=["fruit"]]
+mass = 0.25
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_nrypi")
+type = 5
+points = 12
+
+[node name="06apple" parent="." instance=ExtResource("2_epjsp")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fygt0")
